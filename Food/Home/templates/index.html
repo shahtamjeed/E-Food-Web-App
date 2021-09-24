@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3 class="bg-success text-center"> {{message}} </h3>
+<div class="row">
+     {% for product in products %}
+        <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{{product.image_url}}" style="height:220px" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.price}}</p>
+                <a href="{% url 'buy' product.name %}" name="{{product.name}}" class="btn btn-primary">Order Now</a>
+                <a href="{% url 'add_item' product.name %}" name="{{product.name}}" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
